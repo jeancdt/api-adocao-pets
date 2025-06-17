@@ -10,10 +10,10 @@ class UserModel {
 
     // New User
     static async create(user) {
-        const { email, password, role } = user;
+        const { name, email, password, role, phone } = user;
         const [result] = await db.query(
-            'INSERT INTO users (email, password, role) VALUES (?, ?, ?)',
-            [email, password, role]
+            'INSERT INTO users (name, email, password, role, phone) VALUES (?, ?, ?, ?, ?)',
+            [name, email, password, role, phone]
         );
 
         return result.insertId;
