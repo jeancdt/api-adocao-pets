@@ -9,9 +9,11 @@ POST {{baseURL}}/auth/register
 Content-Type: application/json
 
 {
+    "name": "teste1",
     "email": "novo@ifrs.edu.br",
     "password": "senha123",
-    "role": "user"
+    "phone":"54999123456",
+    "role": "admin"
 }
 
 ### Login do novo usuário (pegar o token gerado abaixo)
@@ -48,3 +50,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 ### Acesso à área admin (rota protegida, requer token de usuário com role "admin")
 GET {{baseURL}}/protected/admin 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGlmcnMuZWR1LmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQ3NzgwODIxLCJleHAiOjE3NDc3ODQ0MjF9.9g5zEdBQXkEMExvgV6EUmnRHQiLJC1HkBQDO56eGEMQ
+
+### debug
+GET {{baseURL}}/debug/main
