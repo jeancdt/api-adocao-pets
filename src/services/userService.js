@@ -5,7 +5,7 @@ const UserModel = require("../models/userModel");
 class UserService {
     // Registrar novo usuário
     static async registerUser(user) {
-        const { email, password, role } = user;
+        const { email, password } = user;
         // Verifica e-mail caso cadastrado
         const existing = await UserModel.findByEmail(email);
         if (existing) {
@@ -43,6 +43,82 @@ class UserService {
         );
 
         return { token };
+    }
+
+    // Encontra todos usuários
+    static async getUsers() {
+        const users = await UserModel.getUsers();
+        if (!users) {
+            const err = new Error('Nenhum usuário encontrado!');
+            err.status = 404;
+            throw err;
+        }
+
+        return { users };
+    }
+
+    // Busca usuário por ID
+    static async findById(id) {
+        const user = await UserModel.findById(id);
+
+        return { user };
+    }
+
+    // Atualiza dados do usuário pelo ID
+    static async updateUser(id, data) {
+        const existing = await UserModel.findById(id);
+        if (!existing) {
+            const err = new Error('Usuário não encontrado');
+            err.status = 404;
+            throw err;
+        }
+
+        let password = existing.password;
+        if (data.password) {
+            password = await bcrypt.hash(data.password, 10);
+        }
+
+        if (existing.role == 'adopter' && data.role == 'admin') {
+            const err = new Error('Falha ao trocar função do usuário');
+            err.status = 500;
+            throw err;
+        }
+
+        const updated = {
+            name: data.name ?? existing.name,
+            email: data.email ?? existing.email,
+            password,
+            phone: data.phone ?? existing.phone,
+            role: data.role ?? existing.role,
+        };
+
+        const affected = await UserModel.updateUser(id, updated);
+        if (!affected) {
+            const err = new Error('Falha ao atualizar usuário');
+            err.status = 500;
+            throw err;
+        }
+
+        return { message: 'Usuário atualizado com sucesso' };
+    }
+
+    // Remove um usuário por ID
+    static async deleteById(id) {
+        const existing = await UserModel.findById(id);
+        if (!existing) {
+            const err = new Error('Usuário não encontrado');
+            err.status = 404;
+            throw err;
+        }
+
+        const affected = await UserModel.deleteById(id);
+        if (!affected) {
+            const err = new Error('Falha ao remover usuário');
+            err.status = 500;
+            throw err;
+        }
+
+        return { message: 'Usuário removido com sucesso', user: existing };
     }
 }
 
