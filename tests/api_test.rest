@@ -1,55 +1,68 @@
 @baseURL = http://localhost:3000
 
 ### Rota pública (acesso livre)
+
 GET {{baseURL}}/public/home 
 Content-Type: application/json
 
-### Cadastro de novo usuário
+### Cadastra um novo usuário (adopter ou admin)
+
 POST {{baseURL}}/auth/register 
 Content-Type: application/json
 
 {
-    "name": "teste1",
-    "email": "novo@ifrs.edu.br",
+    "name": "adopter",
+    "email": "adopter1@email.br",
     "password": "senha123",
-    "phone":"54999123456",
-    "role": "admin"
+    "phone": "54999123456",
+    "role": "adopter"
 }
 
-### Login do novo usuário (pegar o token gerado abaixo)
+### Realiza login e retorna o token JWT - email: adopter@email.br ou admin@email.br e senha: senha123
+
 POST {{baseURL}}/auth/login 
 Content-Type: application/json
 
 {
-    "email": "novo@ifrs.edu.br",
+    "email": "admin@email.br",
     "password": "senha123"
 }
 
-### Login do usuário comum (usuário já existente no banco)
-POST {{baseURL}}/auth/login 
+### Lista todos os usuários
+
+GET {{baseURL}}/protected/users 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUwODAzMzM2LCJleHAiOjE3NTA4MDY5MzZ9.dG-oDQjS5QivbL6tXDDeASJngNwVrDplmD6-yd3uR00
+
+### Busca usuário por ID
+
+GET {{baseURL}}/protected/users/4 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUwODAzMzM2LCJleHAiOjE3NTA4MDY5MzZ9.dG-oDQjS5QivbL6tXDDeASJngNwVrDplmD6-yd3uR00
+
+### Atualiza dados do usuário pelo ID
+
+PUT {{baseURL}}/protected/users/1 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkb3B0ZXJAZW1haWwuYnIiLCJyb2xlIjoiYWRvcHRlciIsImlhdCI6MTc1MDgwODU4MCwiZXhwIjoxNzUwODEyMTgwfQ.UuXZ1cFSNIAMq1NPv9LXaxujZm9RjEnzR4nL8tVUxpM
 Content-Type: application/json
 
 {
-    "email": "usuario@ifrs.edu.br",
-    "password": "123456"
+    "email": "novoTeste@email.br"
 }
 
-### Login do administrador (usuário já existente no banco)
-POST {{baseURL}}/auth/login 
-Content-Type: application/json
+### Remove um usuário por ID
 
-{
-    "email": "admin@ifrs.edu.br",
-    "password": "admin123"
-}
+DELETE {{baseURL}}/protected/users/6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUwODA5Mzc5LCJleHAiOjE3NTA4MTI5Nzl9.5gWgGANM-nlz75KJoOtbJ9Gm-45LVJT99D9xARpATXI
 
 ### Acesso ao painel (rota protegida, requer token de qualquer usuário autenticado)
+
 GET {{baseURL}}/protected/dashboard 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGlmcnMuZWR1LmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQ3NzgwODIxLCJleHAiOjE3NDc3ODQ0MjF9.9g5zEdBQXkEMExvgV6EUmnRHQiLJC1HkBQDO56eGEMQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkb3B0ZXJAZW1haWwuYnIiLCJyb2xlIjoiYWRvcHRlciIsImlhdCI6MTc1MDgwMzM2MiwiZXhwIjoxNzUwODA2OTYyfQ.FG_dGWgzvDcYeULjNUIQsslPdBvCQ6R44nHU5SQYzuk
 
 ### Acesso à área admin (rota protegida, requer token de usuário com role "admin")
+
 GET {{baseURL}}/protected/admin 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGlmcnMuZWR1LmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQ3NzgwODIxLCJleHAiOjE3NDc3ODQ0MjF9.9g5zEdBQXkEMExvgV6EUmnRHQiLJC1HkBQDO56eGEMQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkb3B0ZXJAZW1haWwuYnIiLCJyb2xlIjoiYWRvcHRlciIsImlhdCI6MTc1MDgwMzM2MiwiZXhwIjoxNzUwODA2OTYyfQ.FG_dGWgzvDcYeULjNUIQsslPdBvCQ6R44nHU5SQYzuk
 
 ### debug
+
 GET {{baseURL}}/debug/main
