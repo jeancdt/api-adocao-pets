@@ -1,4 +1,5 @@
 const UserService = require("../services/userService");
+const PetService = require("../services/petService");
 
 class ProtectedController {
   // Usuário normal
@@ -88,6 +89,44 @@ class ProtectedController {
         message: error.message || "Erro ao remover usuário",
         error: error.message,
       });
+    }
+  }
+
+  static async getPets(req, res) {
+    try {
+      const { pets } = await PetService.getPets();
+
+      return res.status(200).json(pets);
+    } catch (error) {
+      return res.status(500).json({
+        message: "Erro ao buscar animal",
+        error: error.message,
+      });
+    }
+  }
+
+  // Busca pet por ID
+  static async findPetById(req, res) {
+    try {
+      const id = req.params.id;
+      const { pet } = await PetService.findById(id);
+
+      return res.status(200).json(pet);
+    } catch (error) {
+      return res.status(500).json({
+        message: "Erro ao buscar animal por ID",
+        error: error.message,
+      });
+    }
+  }
+
+  // Cadastra um novo pet
+  static async registerPet(req, res) {
+    try {
+      const result = await PetService.registerPet(req.body);
+      return res.status(201).json(result);
+    } catch (error) {
+      return res.status(409).json({ message: error.message });
     }
   }
 }

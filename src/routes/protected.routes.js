@@ -9,5 +9,8 @@ router.get('/users', authenticateToken, authorizeRole('admin'), ProtectedControl
 router.get('/users/:id', authenticateToken, ProtectedController.findById);
 router.put('/users/:id', authenticateToken, ProtectedController.updateUser);
 router.delete('/users/:id', authenticateToken, authorizeRole('admin'), ProtectedController.deleteById);
+router.get('/pets', authenticateToken, authorizeRole('admin'), ProtectedController.getPets);
+router.get('/pets/:id', authenticateToken, authorizeRole('admin'), ProtectedController.findPetById);
+router.post('/pets', authenticateToken, authorizeRole('admin'), ProtectedController.registerPet);
 
 module.exports = router;

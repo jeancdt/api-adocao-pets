@@ -11,11 +11,11 @@ POST {{baseURL}}/auth/register
 Content-Type: application/json
 
 {
-    "name": "adopter",
-    "email": "adopter1@email.br",
+    "name": "admin",
+    "email": "admin@email.br",
     "password": "senha123",
     "phone": "54999123456",
-    "role": "adopter"
+    "role": "admin"
 }
 
 ### Realiza login e retorna o token JWT - email: adopter@email.br ou admin@email.br e senha: senha123
@@ -31,7 +31,7 @@ Content-Type: application/json
 ### Lista todos os usuários
 
 GET {{baseURL}}/protected/users 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUwODAzMzM2LCJleHAiOjE3NTA4MDY5MzZ9.dG-oDQjS5QivbL6tXDDeASJngNwVrDplmD6-yd3uR00
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxMjk5NTMwLCJleHAiOjE3NTEzMDMxMzB9.Cc7IPn7CRwOeOBG0KD3H1Q4UBBHavkRrw9eEVaxaQPc
 
 ### Busca usuário por ID
 
@@ -52,6 +52,31 @@ Content-Type: application/json
 
 DELETE {{baseURL}}/protected/users/6
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUwODA5Mzc5LCJleHAiOjE3NTA4MTI5Nzl9.5gWgGANM-nlz75KJoOtbJ9Gm-45LVJT99D9xARpATXI
+
+### Lista todos os pets (inclusive os adotados)
+
+GET {{baseURL}}/protected/pets
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxMjk5NTMwLCJleHAiOjE3NTEzMDMxMzB9.Cc7IPn7CRwOeOBG0KD3H1Q4UBBHavkRrw9eEVaxaQPc
+
+### Busca usuário por ID
+
+GET {{baseURL}}/protected/pets/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxMjk5NTMwLCJleHAiOjE3NTEzMDMxMzB9.Cc7IPn7CRwOeOBG0KD3H1Q4UBBHavkRrw9eEVaxaQPc
+
+### Cadastra um novo pet
+
+POST {{baseURL}}/protected/pets
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxMjk5NTMwLCJleHAiOjE3NTEzMDMxMzB9.Cc7IPn7CRwOeOBG0KD3H1Q4UBBHavkRrw9eEVaxaQPc
+Content-Type: application/json
+
+{
+    "name": "Tobi",
+    "age": 3,
+    "species": "jacaré",
+    "size": "large",
+    "status": "available",
+    "description": "Um jacaré de 3 metros"
+}
 
 ### Acesso ao painel (rota protegida, requer token de qualquer usuário autenticado)
 
