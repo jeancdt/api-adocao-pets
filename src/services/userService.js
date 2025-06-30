@@ -56,6 +56,11 @@ class UserService {
   // Busca usuário por ID
   static async findById(id) {
     const user = await UserModel.findById(id);
+    if (!user) {
+      const err = new Error("Nenhum usuário encontrado!");
+      err.status = 404;
+      throw err;
+    }
 
     return { user };
   }
