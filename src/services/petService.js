@@ -102,6 +102,18 @@ class PetService {
 
     return { message: "Animal removido com sucesso", pet: existing };
   }
+
+  // Atualiza os dados de um pet ao ser adotado
+  static async updateAdoptedPets(id) {
+    const affected = await PetModel.updateAdoptedPets(id);
+    if (!affected) {
+      const err = new Error("Falha ao atualizar animal para adotado");
+      err.status = 500;
+      throw err;
+    }
+
+    return { message: "Animal atualizado para adotado com sucesso" };
+  }
 }
 
 module.exports = PetService;

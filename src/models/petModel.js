@@ -50,6 +50,13 @@ class PetModel {
 
     return result.affectedRows;
   }
+
+  // Atualiza os dados de um pet ao ser adotado
+  static async updateAdoptedPets(id) {
+    const [result] = await db.query("UPDATE pets SET status = 'adopted' WHERE id = ?", [id]);
+
+    return result.affectedRows;
+  }
 }
 
 module.exports = PetModel;
