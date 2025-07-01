@@ -9,7 +9,7 @@ CREATE TABLE users (
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     phone VARCHAR(20),
-    role ENUM('admin', 'adopter') NOT NULL
+    role ENUM('admin', 'adopter') NOT NULL DEFAULT 'adopter'
 );
 
 CREATE TABLE pets (
