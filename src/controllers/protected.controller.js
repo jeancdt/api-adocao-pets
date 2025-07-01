@@ -1,5 +1,6 @@
 const UserService = require("../services/userService");
 const PetService = require("../services/petService");
+const AdoptionService = require("../services/adoptionService");
 
 class ProtectedController {
   // Usuário normal
@@ -160,6 +161,30 @@ class ProtectedController {
         message: error.message || "Erro ao remover animal",
         error: error.message,
       });
+    }
+  }
+
+  // Lista todas as adoções realizadas
+  static async getAdoptions(req, res) {
+    try {
+      const { adoptions } = await AdoptionService.getAdoptions();
+
+      return res.status(200).json(adoptions);
+    } catch (error) {
+      return res.status(500).json({
+        message: "Erro ao buscar adoções",
+        error: error.message,
+      });
+    }
+  }
+
+  // Realiza a adoção de um pet.
+  static async registerAdoption(req, res) {
+    try {
+      const result = await AdoptionService.registerAdoption(req.body);
+      return res.status(201).json(result);
+    } catch (error) {
+      return res.status(409).json({ message: error.message });
     }
   }
 }
