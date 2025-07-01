@@ -66,7 +66,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 ### Busca pet por ID
 
 GET {{baseURL}}/protected/pets/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxMjk5NTMwLCJleHAiOjE3NTEzMDMxMzB9.Cc7IPn7CRwOeOBG0KD3H1Q4UBBHavkRrw9eEVaxaQPc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDAzNjMzLCJleHAiOjE3NTE0MDcyMzN9.C4Fnp5AypiPjbVBzLYfHsxn5wPMocghfpx7g1NUhKFo
 
 ### Cadastra um novo pet
 
@@ -97,6 +97,22 @@ Content-Type: application/json
 
 DELETE {{baseURL}}/protected/pets/2
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxMzI5OTY0LCJleHAiOjE3NTEzMzM1NjR9.oANnG-kxj3AxPzgQXxYkmn2obOF7JQmEH9NUe1akZ80
+
+### Lista todas as adoções realizadas
+
+GET {{baseURL}}/protected/adoptions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDAzNjMzLCJleHAiOjE3NTE0MDcyMzN9.C4Fnp5AypiPjbVBzLYfHsxn5wPMocghfpx7g1NUhKFo
+
+### Realiza a adoção de um pet.
+
+POST {{baseURL}}/protected/adoptions 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDAzNjMzLCJleHAiOjE3NTE0MDcyMzN9.C4Fnp5AypiPjbVBzLYfHsxn5wPMocghfpx7g1NUhKFo
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "pet_id": 1
+}
 
 ### Acesso ao painel (rota protegida, requer token de qualquer usuário autenticado)
 
