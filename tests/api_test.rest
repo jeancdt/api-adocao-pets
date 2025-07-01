@@ -114,6 +114,8 @@ Content-Type: application/json
     "pet_id": 1
 }
 
+
+### Debug e Legado!
 ### Acesso ao painel (rota protegida, requer token de qualquer usuário autenticado)
 
 GET {{baseURL}}/protected/dashboard 
