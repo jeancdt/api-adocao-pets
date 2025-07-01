@@ -12,5 +12,7 @@ router.delete('/users/:id', authenticateToken, authorizeRole('admin'), Protected
 router.get('/pets', authenticateToken, authorizeRole('admin'), ProtectedController.getPets);
 router.get('/pets/:id', authenticateToken, authorizeRole('admin'), ProtectedController.findPetById);
 router.post('/pets', authenticateToken, authorizeRole('admin'), ProtectedController.registerPet);
+router.put('/pets/:id', authenticateToken, authorizeRole('admin'), ProtectedController.updatePet);
+router.delete('/pets/:id', authenticateToken, authorizeRole('admin'), ProtectedController.deletePetById);
 
 module.exports = router;

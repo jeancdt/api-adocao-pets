@@ -129,6 +129,39 @@ class ProtectedController {
       return res.status(409).json({ message: error.message });
     }
   }
+
+  // Atualiza os dados de um pet
+  static async updatePet(req, res) {
+    try {
+      const id = Number(req.params.id);
+      const data = req.body;
+
+      const result = await PetService.updatePets(id, data);
+
+      return res.status(200).json(result);
+    } catch (error) {
+      const status = error.status || 500;
+
+      return res.status(status).json({
+        message: error.message || "Erro ao atualizar animal",
+      });
+    }
+  }
+
+  // Remove um pet do sistema (somente se status = available)
+  static async deletePetById(req, res) {
+    try {
+      const id = req.params.id;
+      const result = await PetService.deleteById(id);
+
+      return res.status(200).json(result);
+    } catch (error) {
+      return res.status(error.status || 500).json({
+        message: error.message || "Erro ao remover animal",
+        error: error.message,
+      });
+    }
+  }
 }
 
 module.exports = ProtectedController;
