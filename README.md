@@ -40,32 +40,34 @@ npm start
 ## Estrutura do Banco de Dados
 
 ### Tabela `users`
-- `id` - INT (Primary Key, Auto Increment)
-- `name` - VARCHAR(100)
-- `email` - VARCHAR(100) UNIQUE
-- `password` - VARCHAR(255)
+- `id` - INT AUTO_INCREMENT PRIMARY KEY
+- `name` - VARCHAR(100) NOT NULL
+- `email` - VARCHAR(100) NOT NULL UNIQUE
+- `password` - VARCHAR(255) NOT NULL
 - `phone` - VARCHAR(20)
-- `role` - ENUM('admin', 'adopter')
+- `role` - ENUM('admin', 'adopter') NOT NULL DEFAULT 'adopter'
 
 ### Tabela `pets`
-- `id` - INT (Primary Key, Auto Increment)
-- `name` - VARCHAR(100)
-- `age` - INT
-- `species` - VARCHAR(50)
-- `size` - ENUM('small', 'medium', 'large')
-- `status` - ENUM('available', 'adopted')
+- `id` - INT AUTO_INCREMENT PRIMARY KEY
+- `name` - VARCHAR(100) NOT NULL
+- `age` - INT NOT NULL
+- `species` - VARCHAR(50) NOT NULL
+- `size` - ENUM('small', 'medium', 'large') NOT NULL
+- `status` - ENUM('available', 'adopted') NOT NULL DEFAULT 'available'
 - `description` - TEXT
 
 ### Tabela `adoptions`
-- `id` - INT (Primary Key, Auto Increment)
-- `user_id` - INT (Foreign Key -> users.id)
-- `pet_id` - INT (Foreign Key -> pets.id)
-- `adoption_date` - DATE
+- `id` - INT AUTO_INCREMENT PRIMARY KEY
+- `user_id` - INT NOT NULL
+- `pet_id` - INT NOT NULL
+- `adoption_date` - DATE NOT NULL
+- `foreign key (user_id)` - REFERENCES users(id)
+- `foreign key (pet_id)` - REFERENCES pets(id)
 
 ## Rotas
 
 - `/public/*` - Rotas públicas (acesso livre)
-- `/auth/*` - Rotas de autenticação (registro e login)
+- `/auth/*` - Rotas de autenticação (registro e login - acesso livre)
 - `/protected/*` - Rotas protegidas (requer autenticação JWT)
 
 ## Testes
