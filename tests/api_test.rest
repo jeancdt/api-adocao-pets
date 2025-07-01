@@ -5,6 +5,11 @@
 GET {{baseURL}}/public/home 
 Content-Type: application/json
 
+### Lista todos os pets com status "available" para adoção
+
+GET {{baseURL}}/public/pets/available 
+Content-Type: application/json
+
 ### Cadastra um novo usuário (adopter ou admin)
 
 POST {{baseURL}}/auth/register 
@@ -58,7 +63,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 GET {{baseURL}}/protected/pets
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxMjk5NTMwLCJleHAiOjE3NTEzMDMxMzB9.Cc7IPn7CRwOeOBG0KD3H1Q4UBBHavkRrw9eEVaxaQPc
 
-### Busca usuário por ID
+### Busca pet por ID
 
 GET {{baseURL}}/protected/pets/1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxMjk5NTMwLCJleHAiOjE3NTEzMDMxMzB9.Cc7IPn7CRwOeOBG0KD3H1Q4UBBHavkRrw9eEVaxaQPc
@@ -66,7 +71,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 ### Cadastra um novo pet
 
 POST {{baseURL}}/protected/pets
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxMjk5NTMwLCJleHAiOjE3NTEzMDMxMzB9.Cc7IPn7CRwOeOBG0KD3H1Q4UBBHavkRrw9eEVaxaQPc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxMzI5OTY0LCJleHAiOjE3NTEzMzM1NjR9.oANnG-kxj3AxPzgQXxYkmn2obOF7JQmEH9NUe1akZ80
 Content-Type: application/json
 
 {
@@ -77,6 +82,21 @@ Content-Type: application/json
     "status": "available",
     "description": "Um jacaré de 3 metros"
 }
+
+### Atualiza os dados de um pet
+
+PUT {{baseURL}}/protected/pets/1 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxMzI5OTY0LCJleHAiOjE3NTEzMzM1NjR9.oANnG-kxj3AxPzgQXxYkmn2obOF7JQmEH9NUe1akZ80
+Content-Type: application/json
+
+{
+    "name": "Osvaldo"
+}
+
+### Remove um pet do sistema (somente se status = available)
+
+DELETE {{baseURL}}/protected/pets/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxMzI5OTY0LCJleHAiOjE3NTEzMzM1NjR9.oANnG-kxj3AxPzgQXxYkmn2obOF7JQmEH9NUe1akZ80
 
 ### Acesso ao painel (rota protegida, requer token de qualquer usuário autenticado)
 
