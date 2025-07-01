@@ -74,15 +74,22 @@ class UserService {
       throw err;
     }
 
-    let password = existing.password;
-    if (data.password) {
-      password = await bcrypt.hash(data.password, 10);
+    const emailExists = await UserModel.findByEmail(data.email);
+    if (emailExists) {
+      const err = new Error("Email do usuário já cadastrado!");
+      err.status = 500;
+      throw err;
     }
 
     if (existing.role == "adopter" && data.role == "admin") {
       const err = new Error("Falha ao trocar função do usuário");
       err.status = 500;
       throw err;
+    }
+
+    let password = existing.password;
+    if (data.password) {
+      password = await bcrypt.hash(data.password, 10);
     }
 
     const updated = {
