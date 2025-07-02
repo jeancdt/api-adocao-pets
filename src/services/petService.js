@@ -1,7 +1,7 @@
 const PetModel = require("../models/petModel");
 
 class PetService {
-  // Lista todos os pets (inclusive os adotados)
+  // Lista todos os pets somente os available
   static async getPetsAvailable() {
     const pets = await PetModel.getPetsAvailable();
     if (!pets) {
@@ -87,7 +87,7 @@ class PetService {
       throw err;
     }
 
-    if (!existing.status == "available") {
+    if (existing.status == "adopted") {
       const err = new Error("Falha ao remover animal. Animal já adotado!");
       err.status = 500;
       throw err;

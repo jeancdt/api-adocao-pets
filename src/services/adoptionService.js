@@ -33,15 +33,15 @@ class AdoptionService {
       const err = new Error("Nenhum usuário encontrado!");
       err.status = 404;
       throw err;
-    } else if (!user.role == "adopter") {
+    } else if (user.role == "admin") {
       const err = new Error("Usuário não é adopter!");
       err.status = 404;
       throw err;
     }
 
-    await PetModel.updateAdoptedPets(adoptions.pet_id);
-
     const id = await AdoptionModel.create(adoptions);
+    
+    await PetModel.updateAdoptedPets(adoptions.pet_id);
 
     return { message: "Adoção registrada com sucesso", id };
   }
