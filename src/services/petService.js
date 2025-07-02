@@ -53,7 +53,7 @@ class PetService {
       throw err;
     }
 
-    if (!existing.status == "adopted") {
+    if (existing.status == "adopted") {
       const err = new Error("Animal já adotado!");
       err.status = 500;
       throw err;
