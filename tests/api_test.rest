@@ -1,10 +1,5 @@
 @baseURL = http://localhost:3000
 
-### Rota pública (acesso livre)
-
-GET {{baseURL}}/public/home 
-Content-Type: application/json
-
 ### Lista todos os pets com status "available" para adoção
 
 GET {{baseURL}}/public/pets/available 
@@ -16,8 +11,8 @@ POST {{baseURL}}/auth/register
 Content-Type: application/json
 
 {
-    "name": "teste9",
-    "email": "teste9@email.br",
+    "name": "adopter10",
+    "email": "adopter10@email.br",
     "password": "senha123",
     "phone": "54999123456",
     "role": "adopter"
@@ -29,24 +24,24 @@ POST {{baseURL}}/auth/login
 Content-Type: application/json
 
 {
-    "email": "adopter@email.br",
+    "email": "adopter10@email.br",
     "password": "senha123"
 }
 
 ### Lista todos os usuários
 
 GET {{baseURL}}/protected/users 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDA2Nzk5LCJleHAiOjE3NTE0MTAzOTl9.GnCrMa94MTkQahugMwUXQtmvHfEi3h234SGw7zOgFhg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkb3B0ZXJAZW1haWwuYnIiLCJyb2xlIjoiYWRvcHRlciIsImlhdCI6MTc1MTQxNjA1MiwiZXhwIjoxNzUxNDE5NjUyfQ.g2gpM3emUhKCeFRHvTgY3RLuk3MDVoDVB10BZEOinCM
 
 ### Busca usuário por ID
 
 GET {{baseURL}}/protected/users/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDA2Nzk5LCJleHAiOjE3NTE0MTAzOTl9.GnCrMa94MTkQahugMwUXQtmvHfEi3h234SGw7zOgFhg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkb3B0ZXJAZW1haWwuYnIiLCJyb2xlIjoiYWRvcHRlciIsImlhdCI6MTc1MTQxNjA1MiwiZXhwIjoxNzUxNDE5NjUyfQ.g2gpM3emUhKCeFRHvTgY3RLuk3MDVoDVB10BZEOinCM
 
 ### Atualiza dados do usuário pelo ID
 
-PUT {{baseURL}}/protected/users/7
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDA2Nzk5LCJleHAiOjE3NTE0MTAzOTl9.GnCrMa94MTkQahugMwUXQtmvHfEi3h234SGw7zOgFhg
+PUT {{baseURL}}/protected/users/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkb3B0ZXJAZW1haWwuYnIiLCJyb2xlIjoiYWRvcHRlciIsImlhdCI6MTc1MTQxNjA1MiwiZXhwIjoxNzUxNDE5NjUyfQ.g2gpM3emUhKCeFRHvTgY3RLuk3MDVoDVB10BZEOinCM
 Content-Type: application/json
 
 {
@@ -55,58 +50,58 @@ Content-Type: application/json
 
 ### Remove um usuário por ID
 
-DELETE {{baseURL}}/protected/users/9
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDA2Nzk5LCJleHAiOjE3NTE0MTAzOTl9.GnCrMa94MTkQahugMwUXQtmvHfEi3h234SGw7zOgFhg
+DELETE {{baseURL}}/protected/users/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDE2MDY5LCJleHAiOjE3NTE0MTk2Njl9.zCFuKvrWqd4Ip5oUXWa9lTIpepKpDOxJ6kjT_Tq9gjk
 
 ### Lista todos os pets (inclusive os adotados)
 
 GET {{baseURL}}/protected/pets
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDA2Nzk5LCJleHAiOjE3NTE0MTAzOTl9.GnCrMa94MTkQahugMwUXQtmvHfEi3h234SGw7zOgFhg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDE2MDY5LCJleHAiOjE3NTE0MTk2Njl9.zCFuKvrWqd4Ip5oUXWa9lTIpepKpDOxJ6kjT_Tq9gjk
 
 ### Busca pet por ID
 
-GET {{baseURL}}/protected/pets/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDA2Nzk5LCJleHAiOjE3NTE0MTAzOTl9.GnCrMa94MTkQahugMwUXQtmvHfEi3h234SGw7zOgFhg
+GET {{baseURL}}/protected/pets/6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDE2MDY5LCJleHAiOjE3NTE0MTk2Njl9.zCFuKvrWqd4Ip5oUXWa9lTIpepKpDOxJ6kjT_Tq9gjk
 
 ### Cadastra um novo pet
 
 POST {{baseURL}}/protected/pets
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDA2Nzk5LCJleHAiOjE3NTE0MTAzOTl9.GnCrMa94MTkQahugMwUXQtmvHfEi3h234SGw7zOgFhg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDE2MDY5LCJleHAiOjE3NTE0MTk2Njl9.zCFuKvrWqd4Ip5oUXWa9lTIpepKpDOxJ6kjT_Tq9gjk
 Content-Type: application/json
 
 {
-    "name": "Tobi3",
-    "age": 3,
-    "species": "jacaré",
-    "size": "large",
+    "name": "JACARE",
+    "age": 1,
+    "species": "cachorro",
+    "size": "small",
     "status": "available",
-    "description": "Um jacaré de 3 metros"
+    "description": "Um cachorro marrom"
 }
 
 ### Atualiza os dados de um pet
 
-PUT {{baseURL}}/protected/pets/1 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDA2Nzk5LCJleHAiOjE3NTE0MTAzOTl9.GnCrMa94MTkQahugMwUXQtmvHfEi3h234SGw7zOgFhg
+PUT {{baseURL}}/protected/pets/6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDE2MDY5LCJleHAiOjE3NTE0MTk2Njl9.zCFuKvrWqd4Ip5oUXWa9lTIpepKpDOxJ6kjT_Tq9gjk
 Content-Type: application/json
 
 {
-    "name": "Osvaldo"
+    "name": "jacaré"
 }
 
 ### Remove um pet do sistema (somente se status = available)
 
-DELETE {{baseURL}}/protected/pets/4
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDA2Nzk5LCJleHAiOjE3NTE0MTAzOTl9.GnCrMa94MTkQahugMwUXQtmvHfEi3h234SGw7zOgFhg
+DELETE {{baseURL}}/protected/pets/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDE2MDY5LCJleHAiOjE3NTE0MTk2Njl9.zCFuKvrWqd4Ip5oUXWa9lTIpepKpDOxJ6kjT_Tq9gjk
 
 ### Lista todas as adoções realizadas
 
 GET {{baseURL}}/protected/adoptions
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDA2Nzk5LCJleHAiOjE3NTE0MTAzOTl9.GnCrMa94MTkQahugMwUXQtmvHfEi3h234SGw7zOgFhg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDE2MDY5LCJleHAiOjE3NTE0MTk2Njl9.zCFuKvrWqd4Ip5oUXWa9lTIpepKpDOxJ6kjT_Tq9gjk
 
 ### Realiza a adoção de um pet.
 
 POST {{baseURL}}/protected/adoptions 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDA2Nzk5LCJleHAiOjE3NTE0MTAzOTl9.GnCrMa94MTkQahugMwUXQtmvHfEi3h234SGw7zOgFhg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmJyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUxNDE2MDY5LCJleHAiOjE3NTE0MTk2Njl9.zCFuKvrWqd4Ip5oUXWa9lTIpepKpDOxJ6kjT_Tq9gjk
 Content-Type: application/json
 
 {
@@ -115,7 +110,28 @@ Content-Type: application/json
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Debug e Legado!
+### Rota pública (acesso livre)
+
+GET {{baseURL}}/public/home 
+Content-Type: application/json
+
 ### Acesso ao painel (rota protegida, requer token de qualquer usuário autenticado)
 
 GET {{baseURL}}/protected/dashboard 

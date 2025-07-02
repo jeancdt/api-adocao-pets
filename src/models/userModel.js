@@ -40,7 +40,7 @@ class UserModel {
   static async updateUser(id, data) {
     const { name, email, password, role, phone } = data;
     const [result] = await db.query(
-      "UPDATE users SET name = ?, email = ?, password = ?, phone = ?, role = ? WHERE id = ?",
+      "UPDATE users SET name = ?, email = ?, password = ?, role = ?, phone = ? WHERE id = ?",
       [name, email, password, role, phone, id]
     );
 

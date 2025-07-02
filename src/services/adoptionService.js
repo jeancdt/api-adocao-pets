@@ -19,7 +19,7 @@ class AdoptionService {
   static async registerAdoption(adoptions) {
     const pet = await PetModel.findById(adoptions.pet_id);
     if (!pet) {
-      const err = new Error("Nenhum animal encontrado!");
+      const err = new Error("Nenhuma animal encontrado!");
       err.status = 404;
       throw err;
     } else if (pet.status == "adopted") {
@@ -43,7 +43,7 @@ class AdoptionService {
 
     const id = await AdoptionModel.create(adoptions);
 
-    return { message: "Animal registrado com sucesso", id };
+    return { message: "Adoção registrada com sucesso", id };
   }
 }
 
